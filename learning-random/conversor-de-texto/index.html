@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Texto</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+        width: 100%;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .descricao {
+        color: #666;
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 14px;
+      }
+
+      label {
+        display: block;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+        resize: vertical;
+        min-height: 100px;
+        transition: border-color 0.3s;
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .grupo-input {
+        margin-bottom: 20px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      .resultado {
+        background: #f5f5f5;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        word-break: break-all;
+      }
+
+      .resultado-texto {
+        color: #333;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .exemplo {
+        background: #e8f4f8;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px;
+        font-size: 13px;
+        color: #555;
+      }
+
+      .exemplo strong {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>✨ Conversor de Texto</h1>
+      <p class="descricao">
+        Converte para minúsculas, remove caracteres especiais e substitui
+        espaços por hífen
+      </p>
+
+      <div class="grupo-input">
+        <label for="textoEntrada">Digite seu texto:</label>
+        <textarea
+          id="textoEntrada"
+          placeholder="Ex: Olá Mundo! Como vai você?"
+        ></textarea>
+      </div>
+
+      <button onclick="converterTexto()">Converter</button>
+
+      <div class="resultado" id="resultado" style="display: none">
+        <label>Resultado:</label>
+        <p class="resultado-texto" id="textoResultado"></p>
+      </div>
+
+      <div class="exemplo">
+        <strong>Exemplo:</strong><br />
+        Entrada: "Olá Mundo! Como vai?"<br />
+        Saída: "ola-mundo-como-vai"
+      </div>
+    </div>
+
+    <script>
+      function converterTexto() {
+        // Pega o texto digitado pelo usuário
+        const texto = document.getElementById("textoEntrada").value;
+
+        // Verifica se o campo está vazio
+        if (texto.trim() === "") {
+          alert("Por favor, digite algum texto!");
+          return;
+        }
+
+        // 1. Converte para minúsculas
+        let textoConvertido = texto.toLowerCase();
+
+        // 2. Remove acentos e caracteres especiais
+        textoConvertido = textoConvertido
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+
+        // 3. Remove tudo que não seja letra ou espaço
+        textoConvertido = textoConvertido.replace(/[^a-z\s]/g, "");
+
+        // 4. Remove espaços extras
+        textoConvertido = textoConvertido.trim().replace(/\s+/g, " ");
+
+        // 5. Substitui espaços por hífen
+        textoConvertido = textoConvertido.replace(/\s/g, "-");
+
+        // Mostra o resultado
+        document.getElementById("textoResultado").textContent = textoConvertido;
+        document.getElementById("resultado").style.display = "block";
+      }
+
+      // Permite converter apertando Enter
+      document
+        .getElementById("textoEntrada")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            converterTexto();
+          }
+        });
+    </script>
+  </body>
+</html>
