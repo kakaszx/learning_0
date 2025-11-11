@@ -166,10 +166,105 @@
           <input id="x" type="checkbox" name="social" value="x" />
           <label for="x">X</label>
           <br />
+          <br />
+
+          <label for="musicStyle">Estilo Musical:</label>
+          <input
+            list="styleTypes"
+            id="musicStyle"
+            name="userMusicStyle"
+            type="text"
+          />
+
+          <datalist id="styleTypes">
+            <option value="Rock"></option>
+            <option value="Pop"></option>
+            <option value="Samba"></option>
+            <option value="Sertanejo"></option>
+          </datalist>
+          <br />
+          <br />
+
+          <label for="favoriteColor">Cor Favorita</label>
+          <input type="color" name="userFavoriteColor" id="favoriteColor" />
+        </fieldset>
+        <br />
+
+        <fieldset>
+          <legend>Opnião</legend>
+          <br />
+          <p>O que você achou da qualidade do nosso serviço?</p>
+
+          <input
+            type="radio"
+            name="userServiceOpinion"
+            id="otima"
+            value="otima"
+          />
+          <label for="otima">Ótima</label>
+          <br />
+          <br />
+
+          <input type="radio" name="userServiceOpinion" id="boa" value="boa" />
+          <label for="boa">Boa</label>
+          <br />
+          <br />
+
+          <input
+            type="radio"
+            name="userServiceOpinion"
+            id="regular"
+            value="regular"
+          />
+          <label for="regular">Regular</label>
+          <br />
+          <br />
+
+          <input
+            type="radio"
+            name="userServiceOpinion"
+            id="ruim"
+            value="ruim"
+          />
+          <label for="ruim">Ruim</label>
+          <br />
+          <br />
+
+          <p>Escreva sua opnião:</p>
+          <textarea
+            name="userComment"
+            id="comment"
+            placeholder="Digite aqui..."
+          ></textarea>
+        </fieldset>
+        <br />
+
+        <fieldset>
+          <legend>Confirmações</legend>
+          <input
+            type="checkbox"
+            name="userLgpdTerm"
+            id="LgpdTerm"
+            value="accepted"
+            required
+          />
+          <label for="LgpdTerm">Eu aceito participar da pesquisa</label>
+          <br />
+          <br />
+
+          <input
+            type="checkbox"
+            name="userGetResult"
+            id="GetResult"
+            value="accepted"
+            required
+          />
+          <label for="GetResult">Desejo receber o resultado por email</label>
         </fieldset>
         <br />
 
         <button type="submit">Enviar</button>
+        <button type="reset">Limpar</button>
       </form>
     </section>
   </body>
