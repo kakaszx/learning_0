@@ -1,3 +1,3 @@
 num = int(input("Digite um numero"))
-dobro = num + num
+dobro = num * 2
 print("dobro = ", dobro)
