@@ -1,0 +1,21 @@
+.searchFor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.category {
+  width: 312px;
+  height: 220px;
+  background-color: var(--category-color);
+}
+
+.category header {
+  background-color: transparent;
+}
+
+.category footer a {
+  font-size: 20px;
+  font-weight: var(--text-weight);
+}
