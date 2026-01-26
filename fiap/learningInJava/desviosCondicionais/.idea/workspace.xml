@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b7c17dd5-9939-4396-aeaa-b741e7f0034d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../learningInPython/desviosCondicionais/desvioComposto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../learningInPython/desviosCondicionais/desvioEncadeado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetojava/teste/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetojava/teste/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetojava/teste/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetojava/teste/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetojava/teste/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetojava/teste/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetojava/teste/src/teste.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetojava/teste/teste.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetopython/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../learningInPython/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetopython/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../learningInPython/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetopython/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../learningInPython/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetopython/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../learningInPython/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetopython/.idea/projetopython.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../learningInPython/.idea/learningInPython.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetopython/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../learningInPython/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetopython/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../learningInPython/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projetopython/projetopythonteste/teste.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="38oC61fuGW25OFFhQpDOq07Gn4e" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.desvioComposto.executor": "Run",
+    "Application.desvioSimples.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "D:/learning/fiap/learningInJava/learningInJava/src/Main.java",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b7c17dd5-9939-4396-aeaa-b741e7f0034d" name="Changes" comment="" />
+      <created>1769456359056</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769456359056</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
