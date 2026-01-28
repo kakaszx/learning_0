@@ -2,7 +2,7 @@ package desviosCondicionais;
 
 import java.util.Scanner;
 
-public class desvioComposto {
+public class desvioCompostoSeEntaoSenao {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int tc;

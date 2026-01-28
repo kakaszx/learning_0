@@ -2,7 +2,7 @@ package desviosCondicionais;
 
 import java.util.Scanner;
 
-public class desvioEncadeadov2 {
+public class desvioEncadeadoSeEntaoSenaoSe {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         double sal, ir, sal_liq;

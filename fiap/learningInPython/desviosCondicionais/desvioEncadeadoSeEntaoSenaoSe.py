@@ -11,4 +11,3 @@ sal_liq = sal - ir
 print(f"IR: {ir:.2f}")
 
 print(f"Salario Liquido: {sal_liq:.2f}")
-   
