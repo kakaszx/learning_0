@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Texto</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="image/icons8-zombie-32.png"
+      type="image/x-icon"
+    />
+    <style>
+      :root {
+        --bg: #0d0d14;
+        --card: #16161f;
+        --card2: #1e1e2a;
+        --accent: #7c6af7;
+        --accent2: #f76a8a;
+        --text: #e8e8f0;
+        --muted: #6b6b80;
+        --border: #2a2a38;
+        --success: #4ecca3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Sora", sans-serif;
+        background: var(--bg);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+        overflow-x: hidden;
+      }
+
+      /* Fundo animado */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 40% at 20% 20%,
+            rgba(124, 106, 247, 0.12) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 50% 50% at 80% 80%,
+            rgba(247, 106, 138, 0.08) 0%,
+            transparent 70%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 40px;
+        border-radius: 20px;
+        max-width: 620px;
+        width: 100%;
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.6),
+          0 0 0 1px rgba(124, 106, 247, 0.1);
+        animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Cabeçalho */
+      .header {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .badge {
+        display: inline-block;
+        background: rgba(124, 106, 247, 0.15);
+        border: 1px solid rgba(124, 106, 247, 0.3);
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+        font-family: "Space Mono", monospace;
+      }
+
+      h1 {
+        color: var(--text);
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      h1 span {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .descricao {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 8px;
+        line-height: 1.6;
+      }
+
+      /* Área de input */
+      .grupo-input {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        font-family: "Space Mono", monospace;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 16px;
+        background: var(--card2);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        font-size: 15px;
+        font-family: "Sora", sans-serif;
+        color: var(--text);
+        resize: vertical;
+        min-height: 110px;
+        transition:
+          border-color 0.25s,
+          box-shadow 0.25s;
+        line-height: 1.6;
+      }
+
+      textarea::placeholder {
+        color: var(--muted);
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(124, 106, 247, 0.15);
+      }
+
+      /* Botão converter */
+      .btn-converter {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, var(--accent) 0%, #9a6af7 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 700;
+        font-family: "Sora", sans-serif;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s,
+          opacity 0.2s;
+        letter-spacing: 0.3px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-converter::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      .btn-converter:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(124, 106, 247, 0.4);
+      }
+      .btn-converter:hover::after {
+        opacity: 1;
+      }
+      .btn-converter:active {
+        transform: translateY(0);
+      }
+
+      /* Resultado */
+      .resultado {
+        background: var(--card2);
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        margin-top: 20px;
+        overflow: hidden;
+        animation: fadeIn 0.3s ease both;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .resultado-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .resultado-label {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-family: "Space Mono", monospace;
+      }
+
+      /* Botão copiar */
+      .btn-copiar {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        background: rgba(124, 106, 247, 0.15);
+        border: 1px solid rgba(124, 106, 247, 0.3);
+        color: var(--accent);
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        font-family: "Space Mono", monospace;
+        cursor: pointer;
+        transition: all 0.2s;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-copiar:hover {
+        background: rgba(124, 106, 247, 0.25);
+        border-color: var(--accent);
+        transform: translateY(-1px);
+      }
+
+      .btn-copiar.copiado {
+        background: rgba(78, 204, 163, 0.15);
+        border-color: rgba(78, 204, 163, 0.4);
+        color: var(--success);
+      }
+
+      .btn-copiar svg {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+      }
+
+      .resultado-body {
+        padding: 16px;
+      }
+
+      .resultado-texto {
+        font-family: "Space Mono", monospace;
+        color: var(--text);
+        font-size: 15px;
+        line-height: 1.7;
+        word-break: break-all;
+      }
+
+      /* Contador de caracteres */
+      .chars-info {
+        display: flex;
+        gap: 16px;
+        padding: 10px 16px;
+        border-top: 1px solid var(--border);
+      }
+
+      .char-stat {
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      .char-stat span {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      /* Divisor com exemplo */
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .divider-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .divider-text {
+        font-size: 11px;
+        color: var(--muted);
+        font-family: "Space Mono", monospace;
+        letter-spacing: 1px;
+      }
+
+      .exemplo {
+        background: rgba(124, 106, 247, 0.06);
+        border: 1px solid rgba(124, 106, 247, 0.12);
+        padding: 12px 16px;
+        border-radius: 10px;
+        margin-top: 12px;
+        font-size: 12px;
+        color: var(--muted);
+        font-family: "Space Mono", monospace;
+        line-height: 1.8;
+      }
+
+      .exemplo .arrow {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      /* Notificação toast */
+      .toast {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--success);
+        color: #0d1a14;
+        font-family: "Space Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 10px 22px;
+        border-radius: 40px;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+        z-index: 100;
+        letter-spacing: 0.5px;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="badge">Ferramenta de Texto</div>
+        <h1>Conversor de <span>Texto</span></h1>
+        <p class="descricao">
+          Minúsculas · Remove acentos · Substitui espaços por hífen
+        </p>
+      </div>
+
+      <div class="grupo-input">
+        <label for="textoEntrada">Texto de Entrada</label>
+        <textarea
+          id="textoEntrada"
+          placeholder="Ex: Olá Mundo! Como vai você?"
+        ></textarea>
+      </div>
+
+      <button class="btn-converter" onclick="converterTexto()">
+        ⚡ Converter Texto
+      </button>
+
+      <div class="resultado" id="resultado" style="display: none">
+        <div class="resultado-header">
+          <span class="resultado-label">Resultado</span>
+          <button class="btn-copiar" id="btnCopiar" onclick="copiarTexto()">
+            <svg
+              id="iconeCopiar"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path
+                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+              />
+            </svg>
+            <span id="textoBtnCopiar">Copiar</span>
+          </button>
+        </div>
+        <div class="resultado-body">
+          <p class="resultado-texto" id="textoResultado"></p>
+        </div>
+        <div class="chars-info">
+          <span class="char-stat"
+            >Entrada: <span id="charsEntrada">0</span> chars</span
+          >
+          <span class="char-stat"
+            >Saída: <span id="charsSaida">0</span> chars</span
+          >
+        </div>
+      </div>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-text">EXEMPLO</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="exemplo">
+        "Olá Mundo! Como vai?" <span class="arrow">→</span> "ola-mundo-como-vai"
+      </div>
+    </div>
+
+    <div class="toast" id="toast">✓ Copiado!</div>
+
+    <script>
+      function converterTexto() {
+        const texto = document.getElementById("textoEntrada").value;
+
+        if (texto.trim() === "") {
+          document.getElementById("textoEntrada").style.borderColor = "#f76a8a";
+          setTimeout(() => {
+            document.getElementById("textoEntrada").style.borderColor = "";
+          }, 1200);
+          return;
+        }
+
+        let t = texto.toLowerCase();
+        t = t.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        t = t.replace(/[^a-z\s]/g, "");
+        t = t.trim().replace(/\s+/g, " ");
+        t = t.replace(/\s/g, "-");
+
+        document.getElementById("textoResultado").textContent = t;
+        document.getElementById("charsEntrada").textContent = texto.length;
+        document.getElementById("charsSaida").textContent = t.length;
+
+        const el = document.getElementById("resultado");
+        el.style.display = "none";
+        void el.offsetWidth; // reinicia animação
+        el.style.display = "block";
+
+        // Resetar botão copiar
+        const btn = document.getElementById("btnCopiar");
+        btn.classList.remove("copiado");
+        document.getElementById("textoBtnCopiar").textContent = "Copiar";
+        document.getElementById("iconeCopiar").innerHTML = `
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        `;
+      }
+
+      function copiarTexto() {
+        const texto = document.getElementById("textoResultado").textContent;
+        if (!texto) return;
+
+        navigator.clipboard.writeText(texto).then(() => {
+          const btn = document.getElementById("btnCopiar");
+          btn.classList.add("copiado");
+          document.getElementById("textoBtnCopiar").textContent = "Copiado!";
+          document.getElementById("iconeCopiar").innerHTML = `
+            <polyline points="20 6 9 17 4 12"/>
+          `;
+
+          // Toast
+          const toast = document.getElementById("toast");
+          toast.classList.add("show");
+          setTimeout(() => toast.classList.remove("show"), 2200);
+
+          // Restaura o botão após 3s
+          setTimeout(() => {
+            btn.classList.remove("copiado");
+            document.getElementById("textoBtnCopiar").textContent = "Copiar";
+            document.getElementById("iconeCopiar").innerHTML = `
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            `;
+          }, 3000);
+        });
+      }
+
+      // Enter para converter
+      document
+        .getElementById("textoEntrada")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            converterTexto();
+          }
+        });
+    </script>
+  </body>
+</html>
