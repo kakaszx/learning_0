@@ -8,11 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="shortcut icon"
-      href="image/icons8-editar-vários-32.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="image/converter.png" type="image/x-icon" />
     <style>
       :root {
         --bg: #0d0d14;
@@ -394,7 +390,7 @@
         <div class="badge">Ferramenta de Texto</div>
         <h1>Conversor de <span>Texto</span></h1>
         <p class="descricao">
-          Minúsculas · Remove acentos · Substitui espaços por hífen
+          Minúsculas · Remove acentos · Substitui espaços e barras por hífen
         </p>
       </div>
 
@@ -451,7 +447,7 @@
       </div>
 
       <div class="exemplo">
-        "Olá Mundo! Como vai?" <span class="arrow">→</span> "ola-mundo-como-vai"
+        "Olá Mundo/Como vai?" <span class="arrow">→</span> "ola-mundo-como-vai"
       </div>
     </div>
 
@@ -471,6 +467,9 @@
 
         let t = texto.toLowerCase();
         t = t.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        // Transforma barras "/" em espaço ANTES de limpar os caracteres.
+        // Assim a barra entra no mesmo fluxo que os espaços e vira "-" no final.
+        t = t.replace(/\//g, " ");
         t = t.replace(/[^a-z\s]/g, "");
         t = t.trim().replace(/\s+/g, " ");
         t = t.replace(/\s/g, "-");
